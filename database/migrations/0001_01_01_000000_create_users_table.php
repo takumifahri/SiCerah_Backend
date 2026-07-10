@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('nik', 16)->unique();
+            $table->text('alamat');
+            $table->string('no_wa', 20);
+            $table->string('ktp_path')->nullable();
+            $table->string('role')->default('anggota');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('nik', 16)->unique()->after('email');
-            $table->text('alamat')->after('nik');
-            $table->string('no_wa', 20)->after('alamat');
-            $table->string('ktp_path')->nullable()->after('no_wa');
-            $table->string('role')->default('anggota')->after('ktp_path');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
